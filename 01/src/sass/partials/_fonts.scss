@@ -1,0 +1,45 @@
+/* HTML REFERENCE FONT
+------------------------------------*/
+html {
+    font-size: 2vw;
+    /* all other referring fonts in rem */
+}
+
+
+@mixin font-align-basic($text-align, $margin){
+    text-align: $text-align;
+    padding: 1rem 0;
+    margin: $margin;
+}
+
+
+/* LINKS
+------------------------------------*/
+
+.no-deco { 
+    text-decoration: none;
+    color: black;
+}
+
+
+/* FA FA ICONS
+------------------------------------*/
+
+.fas, .far {
+    color: black;
+}
+
+/* horisontal alignment on parent */
+
+.icon-parent {
+    display: block; /*needs to be a block/inline-block element */
+    line-height: 2rem; /*needs to be same line-height as height */
+    text-align: center;
+}
+
+/* vertical alignment on child - det er noget med at det skal være before/after pseudo.. */
+.icon-align-v {
+    display: inline-block;
+    vertical-align: middle; 
+} 
+
