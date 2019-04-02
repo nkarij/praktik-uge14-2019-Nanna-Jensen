@@ -12,8 +12,9 @@ figure {
 }
 
 h1, h2, h3, h4, h5, h6, p {
-    @include font-align-basic(left, 0.5rem 0, 0);
+    @include font-align-basic(left, 0.5rem, 0);
 }
+
 
 
 ul {

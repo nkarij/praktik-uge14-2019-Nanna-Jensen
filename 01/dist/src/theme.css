@@ -1,4 +1,86 @@
 @charset "UTF-8";
+/* SHORTCUTS TO FIT WIDTH & HEIGHTS
+--------------------------------------------------*/
+/* UL-list decoration
+--------------------------------------------------*/
+/* DEVICE SPECIFIC STYLES
+--------------------------------------------------*/
+/* HTML REFERENCE FONT
+------------------------------------*/
+html {
+  font-size: 10px;
+  /* all other referring fonts in rem */
+}
+
+h1 {
+  font-size: 5rem;
+  text-transform: uppercase;
+}
+
+h2, h3, h4, h5, h6 {
+  font-size: 3rem;
+  text-transform: uppercase;
+}
+
+p, label {
+  font-size: 2rem;
+}
+
+/* LINKS
+------------------------------------*/
+.no-deco {
+  text-decoration: none;
+}
+
+/* FA FA ICONS
+------------------------------------*/
+.fas, .far {
+  color: black;
+}
+
+/* horisontal alignment on parent */
+.icon-parent {
+  display: block;
+  /*needs to be a block/inline-block element */
+  line-height: 2rem;
+  /*needs to be same line-height as height */
+  text-align: center;
+}
+
+/* vertical alignment on child - det er noget med at det skal være before/after pseudo.. */
+.icon-align-v {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  text-align: left;
+  padding: 0.5rem 0;
+  margin: 0;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/*---------------------------------------------------
+    BUTTONS
+----------------------------------------------------*/
 /*---------------------------------------------------
     IMPORTS
 ----------------------------------------------------*/
@@ -195,4 +277,8 @@ ul {
   text-align: center;
 }
 
-/*# sourceMappingURL=style.css.map */
+.main-navigation, .footer {
+  background-color: #cf6363;
+}
+
+/*# sourceMappingURL=theme.css.map */

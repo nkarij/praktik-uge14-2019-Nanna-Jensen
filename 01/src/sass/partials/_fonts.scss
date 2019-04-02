@@ -1,14 +1,29 @@
 /* HTML REFERENCE FONT
 ------------------------------------*/
 html {
-    font-size: 2vw;
+    font-size: 10px;
     /* all other referring fonts in rem */
 }
 
+h1 {
+    font-size: 5rem;
+    text-transform: uppercase;
+} 
 
-@mixin font-align-basic($text-align, $margin){
+h2, h3, h4, h5, h6 {
+    font-size: 3rem;
+    text-transform: uppercase;
+}
+ 
+
+p, label {
+    font-size: 2rem;
+}
+
+
+@mixin font-align-basic($text-align, $padding, $margin){
     text-align: $text-align;
-    padding: 1rem 0;
+    padding: $padding;
     margin: $margin;
 }
 

@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return response.text();
     })
     .then((footer)=>{
-        console.log(footer);
+        // console.log(footer);
         let importedFooterPartial = footer;
         let footerElement = document.querySelector("#footer");
         footerElement.insertAdjacentHTML('beforeend', importedFooterPartial);

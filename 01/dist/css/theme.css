@@ -93,6 +93,10 @@ ul {
   box-shadow: 0px 0px 2px 0px #d1cfd1;
 }
 
+#css-theme {
+  display: none;
+}
+
 /* 
 ------------------------------------*/
 /*---------------------------------------------------
@@ -195,4 +199,8 @@ ul {
   text-align: center;
 }
 
-/*# sourceMappingURL=style.css.map */
+.main-navigation {
+  background-color: #b66161;
+}
+
+/*# sourceMappingURL=theme.css.map */
