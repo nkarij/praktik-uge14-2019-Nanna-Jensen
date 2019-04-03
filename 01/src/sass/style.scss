@@ -23,8 +23,12 @@
     box-shadow: 0px 0px 2px 0px rgba(209,207,209,1);
 }
 
-//  CSS THEME
+.hide-element {
+    display: none;
+}
 
+
+//  CSS THEME
 
 /* 
 ------------------------------------*/
@@ -157,6 +161,7 @@
 }
 
 .slide {
+    position: relative;
     height: 30vh;
     width: 100%;
 }
@@ -167,9 +172,34 @@
     object-fit: cover;
 }
 
+.slide__caption {
+    position: absolute;
+    left: 2%;
+    bottom: 2%;
+    font-size: 3rem;
+    color: white;
+}
+
+.slide__number {
+    position: absolute;
+    left: 2%;
+    top: 2%;
+    font-size: 2rem;
+    color: white;
+}
+
 .auto-slidehow--active {
     background-color: green;
 }
+
+.slider-heading {
+    display: none;
+}
+
+.slider-heading--show {
+    display: block;
+}
+
 
 /*--------------------------------------------------------------------
     employees

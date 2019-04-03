@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // gem imagepath-array
     // onclick: 
         // index++ || index--
-        
         // if index >= data-array.lengt 
             // sæt index = 0;
         // if index =< -1
@@ -16,8 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // set interval + function:
             // loop data-array
                 // sæt currentimage.src = data-imagepath[index]
-                // sæt slidenumber = ++index + "/" + imagearray.length
+                // sæt slidenumber = (index + 1) + "/" + imagearray.length
                 // sæt slidecaption = data-imagecap;
+                // save to local storage
 
     let index = 0;
     let buttonElementPreviousSlide = document.querySelector(".previous-slide");
@@ -25,81 +25,120 @@ document.addEventListener('DOMContentLoaded', () => {
     let featuredImageElement = document.querySelector("#slide__image");
     let buttonAutoSlideElement = document.querySelector(".auto-slidehow");
     let feautredCaptionElement = document.querySelector(".slide__caption");
+    let slideOrderElement = document.querySelector(".slide__number")
     let sourceDataArray = document.querySelectorAll("#data-source");
     let imagePathArray = [];
     let imageCaptionArray = [];
     let startTimer;
+    // console.log(sourceDataArray.length);
 
-    function runSlider(){
+    if(sourceDataArray.length == 0 || null || undefined){
+         document.querySelector(".slide-section").classList.add("hide-element");
+         let sliderHeading = document.querySelector(".slider-heading");
+         sliderHeading.innerHTML = "Der er desværre ingen billeder";
+         sliderHeading.classList.add("slider-heading--show");
 
-        featuredImageElement.src = sourceDataArray[index].dataset.imagepath;
+    }else{
+        function runSlider(){
+            // henter indholdet af localStorage
+            let storedDataLocalStorage = localStorage.getItem("index");
+            console.log(storedDataLocalStorage);
 
-        sourceDataArray.forEach(element => {
-            imagePathArray.push(element.dataset.imagepath);
-            imageCaptionArray.push(element.dataset.imagecap);        
-        });
-
-        // console.log(imagePathArray);
-        // console.log(imageCaptionArray);
-
-        buttonElementNextSlide.addEventListener('click', function(){
-            index++;
-            // console.log(index);
-            if(index >= sourceDataArray.length) {
+            // Tjekker om der er gemt i localStorage
+            if (storedDataLocalStorage !== null || storedDataLocalStorage !== "null" || storedDataLocalStorage !== undefined) {
+                index = parseInt(storedDataLocalStorage);
+                console.log(index);
+                setImageOnUpdate(index);
+                // displayFeaturedSlide(index);
+            }else{
                 index = 0;
-                // console.log(index);
-            }
-            // console.log(index + "next er trykket");
-            displayFeaturedSlide(index);        
-        });
-
-        buttonElementPreviousSlide.addEventListener('click', function(){
-            if(index <= 0) {
-                index = sourceDataArray.length;
-            }
-            index--;
-            // console.log(index + "prev er trykket");
-            displayFeaturedSlide(index);
-        });
-
-        // AUTO FUNCTION
-        buttonAutoSlideElement.addEventListener('click', function(){
-            // sæt start billede
-            displayFeaturedSlide(index);
-            
-            if(buttonAutoSlideElement.classList.contains("auto-slidehow--active")){
-                clearInterval(startTimer);
-                buttonAutoSlideElement.classList.remove("auto-slidehow--active");
-            } else{
-                buttonAutoSlideElement.classList.add("auto-slidehow--active");
-                startTimer = setInterval(AutoSlider, 1000);
+                setImageOnUpdate(index);
+                // displayFeaturedSlide(index);
             }
 
-            function AutoSlider(){
+            function setImageOnUpdate(){
+                featuredImageElement.src = sourceDataArray[index].dataset.imagepath;
+                feautredCaptionElement.innerHTML = sourceDataArray[index].dataset.imagecap;
+                let slideOrder = index + 1;
+                // NB: et problem, hvis der er elementer uden date-imagepath
+                slideOrderElement.innerHTML = slideOrder + "/" + sourceDataArray.length;
+            }
+
+            sourceDataArray.forEach(element => {
+                imagePathArray.push(element.dataset.imagepath);
+                imageCaptionArray.push(element.dataset.imagecap);        
+            });
+
+            // console.log(imagePathArray);
+            // console.log(imageCaptionArray);
+
+            buttonElementNextSlide.addEventListener('click', function(){
                 index++;
-                if(index >= sourceDataArray.length){
+                if(index >= imagePathArray.length) {
                     index = 0;
-
-                } else if(index <= -1 ){
-                    index = sourceDataArray.length - 1;
                 }
-                displayFeaturedSlide(index);
-            };
+                setImageOnUpdate(index);
+                // displayFeaturedSlide(index);
+                localStorage.setItem("index", index);
+                // console.log(localStorage.index + "localStorage");
+            });
 
-        });
+            buttonElementPreviousSlide.addEventListener('click', function(){
+                if(index <= 0) {
+                    index = imagePathArray.length;
+                }
+                index--;
+                // console.log(index + "prev er trykket");
+                setImageOnUpdate(index);
+                // displayFeaturedSlide(index);
+                localStorage.setItem("index", index);
+                console.log(localStorage.index);
+            });
 
+    // ---------- AUTO FUNCTION---------------------------------------
+            buttonAutoSlideElement.addEventListener('click', function(){
+                // sæt start billede
+                setImageOnUpdate(index);
+                // displayFeaturedSlide(index);
+                
+                if(buttonAutoSlideElement.classList.contains("auto-slidehow--active")){
+                    clearInterval(startTimer);
+                    buttonAutoSlideElement.classList.remove("auto-slidehow--active");
+                } else{
+                    buttonAutoSlideElement.classList.add("auto-slidehow--active");
+                    startTimer = setInterval(AutoSlider, 1000);
+                }
 
-        
-        function displayFeaturedSlide(index){
-            let imageSource = imagePathArray[index];
-            let captionSource = imageCaptionArray[index];
-            // console.log(imageSource);
-            featuredImageElement.src = imageSource;
-            feautredCaptionElement.innerHTML = captionSource;
+                function AutoSlider(){
+                    index++;
+                    if(index >= imagePathArray.length){
+                        index = 0;
+
+                    } else if(index <= -1 ){
+                        index = imagePathArray.length - 1;
+                    }
+                    setImageOnUpdate(index);
+                    // displayFeaturedSlide(index);
+                    localStorage.setItem("index", index);
+                    // console.log(localStorage);
+                };
+                
+            });
+
+            // function displayFeaturedSlide(index){
+            //     let imageSource = imagePathArray[index];
+            //     let captionSource = imageCaptionArray[index];
+            //     // console.log(imageSource);
+            //     featuredImageElement.src = imageSource;
+            //     feautredCaptionElement.innerHTML = captionSource;
+            //     let slideOrder = index +1;
+            //     slideOrderElement.innerHTML = slideOrder + "/" + imagePathArray.length;
+            //     // console.log(slideOrderElement.innerHTML);
+            // };
+
         };
 
+        runSlider();    
     };
-
-    runSlider();    
 
 });
