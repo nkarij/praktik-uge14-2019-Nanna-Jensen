@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css" id="default-stylesheet">
+    <link rel="stylesheet" href="" id="css-theme" data-state="off">
+    <title>Startside</title>
+</head>
+<body class="body">
+        <!-- page wrapper -->
+        <div class="page-wrapper">
+
+        <!-- HEADER -->
+        <header class="header">
+            <!-- STATIC HEADER IMAGE -->
+            <div class="header-hero-image"></div>
+            <!-- HEADER BRAND SECTION -->
+            <section class="header-brand-section">
+                <div class="header__logo-wrap">
+                    <img src="IMG/logo-placeholder-300x120.png" alt="logo" class="header__logo-image">
+                </div>
+                <h1 class="header__sitename">Site name</h1>
+            </section>
+        </header>
+
+        <!-- MAIN NAVIGATION -->
+        <nav id="main-navigation" class="main-navigation">
+            <!-- here goes partial -->
+        </nav>
+        <!-- MAIN CONTENT AREA-->
+        <main class="main">
+
+            <section class="toggle-theme">
+                <button id="toggle-theme__button">Skift Tema</button>
+            </section>
+
+            <!-- html, display none -->
+            <div id="imagepath-data">
+                <div id="data-source" data-imagepath="IMG/food/spicy-vegs-small.jpeg" data-imagecap="dummy text" alt=""></div>
+                <div id="data-source" data-imagepath="IMG/food/tjener-small.jpeg" data-imagecap="dummy text" alt=""></div>
+                <div id="data-source" data-imagepath="IMG/food/veggie-kurv-small.jpeg" data-imagecap="dummy text" alt=""></div>
+            </div>
+
+            <figure class="slide">
+                <p class="slide__number"></p>
+                <img src="" alt="" id="slide__image" class="slide__image">
+                <figcaption class="slide__caption"></figcaption>
+            </figure>
+
+            <button class="previous-slide">Prev</button>
+            <button class="next-slide">Next</button>
+            <button data-state="off" class="auto-slidehow">Auto</button>
+                         
+        </main>
+        <!-- FOOTER -->
+        <footer id="footer" class="footer">
+
+        </footer>
+
+    </div> <!-- page wrapper ends -->
+
+    <script src="import-partials.js"></script>
+    <script src="gallery.js"></script>
+    <script src="theme.js"></script>
+    <!-- <script src="javascript.js"></script> -->
+</body>
+</html>

@@ -1,0 +1,23 @@
+[
+    {   
+        "id" : 1,
+        "navn" : "Bulle",
+        "stilling" : "trucker",
+        "text" : "lorem ipsum, etc.",
+        "image" : "IMG/food/abrikoser-small.jpeg"
+    },
+    {
+        "id" : 2,
+        "navn" : "Basse",
+        "stilling" : "laerer",
+        "text" : "lorem ipsum, etc.",
+        "image" : "IMG/food/cranberries-small.jpeg"
+    },
+    {
+        "id" : 3,
+        "navn" : "Bosse",
+        "stilling" : "pedel",
+        "text" : "lorem ipsum, etc.",
+        "image" : "IMG/food/hotpot-small.jpeg"
+    }
+]
