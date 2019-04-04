@@ -1,39 +1,102 @@
 document.addEventListener('DOMContentLoaded', () => {
     // alert("blabla");
-    let guestbookForm = document.querySelector("#guestbook-form");
-    let nameInputValue = document.querySelector("#guestbook-form__name").value;
-    let emailInputValue = document.querySelector("#guestbook-form__email").value;
-    let messageInputValue = document.querySelector("#guestbook-form__message").value;
+    // let guestbookForm = document.querySelector("#guestbook-form");
+    let guestbookForm = document.forms.guestbookform;
+    // console.log(guestbookForm);
+    let guestbookSubmitForm = guestbookForm.elements.guestbookform__submitbutton;
+    
+    // console.log(nameInputValue);
+    // let nameInputValue = document.querySelector("#guestbook-form__name").value;
+    // let emailInputValue = document.querySelector("#guestbook-form__email").value;
+    // let messageInputValue = document.querySelector("#guestbook-form__message").value;
 
-    guestbookForm.addEventListener('submit', function(event){
+    guestbookSubmitForm.addEventListener('click', function(event){
         event.preventDefault();
 
-        // if(nameInputElement != "" || !isNaN(nameInputElement) ||)
-        
-        // if(event.target[0].value == "" || !isNaN(event.target[0].value) || event.target[0].value.length < 2 || event.target[0].value.length > 20){
-        //     alert("this name is invalid. please try again");
-        //     event.target[0].style.backgroundColor = "red";            
-        //     return false;
-        // }else{
-        //     event.target[0].style.backgroundColor = "transparent";  
-        // }
-        // if(regExEmail(event.target[1].value)){
-        //     console.log("super duper");
-        // }else{
-        //     alert("this email is invalid. please try again");
-        //     return false;
-        // }
-        // if(event.target[2].value == "" || !isNaN(event.target[2].value) || event.target[2].value.length > 130) {
-        //     alert("Max 130 characters allowed.");
-        //     return false;
-        // } else {
-        //     alert("Tak for din besked");
-        //     // her kan indsættes diverse ting som ADY gerne vil ha :-).
-        //     let guestbookInput = guestbookForm.submit();
-        //     localStorage.setItem('review', guestbookInput);
-        //     console.log(localStorage);
+        let guestInputArray = [];
+        console.log(guestInputArray);
+
+        let nameInput = guestbookForm.elements.guestbookform__name;
+        let emailInput = guestbookForm.elements.guestbookform__email;
+        let messageInput = guestbookForm.guestbookform__message;
+        // console.log(messageInput.value);
+        validate();
+
+        function validate(){       
+            if(nameInput.value !== ""){
+                let test = nameInput.value;
+                // console.log("indhold");
+                guestInputArray.push(test);
+                // console.log(guestInfoArray);
+            }else{
+                nameInput.classList.add("guestform-input--error");
+            }
+
+            if(emailInput.value !== ""){
+                let test = emailInput.value;
+                // console.log("indhold");
+                guestInputArray.push(test);
+            }else{
+                // emailInput.classList.add("guestform-input--error");
+            }
+
+            if(messageInput.value !== ""){
+                let test = messageInput.value;
+                // console.log("indhold");
+                guestInputArray.push(test);
+                // console.log(guestInfoArray);
+            }else{
+                messageInput.classList.add("guestform-input--error");
+            }
+            return guestInputArray;
+        }
+
+        // console.log(guestInfoArray);
+        // saveToLocalStorage(guestInputArray);
+
+        // function saveToLocalStorage(){
+        //     localStorage.setItem('guestinput', JSON.stringify(guestInputArray));
         // }
 
+        let saveToLocalStorage = localStorage.setItem('guestinput', JSON.stringify(guestInputArray));
+        
+        // NB dette er et array:
+        let retrieveGuestInputLocalStorage = JSON.parse(localStorage.getItem('guestinput'));
+        // console.log(JSON.parse(localStorage.getItem('guestinput')));
+        // console.log(retrieveGuestInputLocalStorage);
+        // console.log(localStorage);               
+
+        // GUESTBOOK TEMPLATE CLONE
+        let displayGuestReviews = document.querySelector(".guestbook-display-container");
+        let guestInfoArray = retrieveGuestInputLocalStorage;
+        let guestReviewTemplate = document.querySelector(".guestbook-display__guest");
+
+        let clonedElement;
+        clonedElement = guestReviewTemplate.cloneNode(true);
+
+        guestInfoArray.forEach(infoitem => {
+            // console.log(typeof(infoitem));
+            // console.log()
+            // console.log(clonedElement);
+
+            if(infoitem == nameInput.value){
+                let displayNameElement = clonedElement.querySelector(".guestbook-display__name");
+                displayNameElement.innerHTML = infoitem;
+                console.log(displayNameElement.innerHTML);
+            } 
+            if(infoitem == messageInput.value){
+                // clonedElement = guestReviewTemplate.cloneNode(true);
+                let displayMessageElement = clonedElement.querySelector(".guestbook-display__message");
+                displayMessageElement.innerHTML = infoitem;
+                console.log(displayMessageElement.innerHTML);
+            }
+           
+        });
+        console.log(clonedElement);
+        displayGuestReviews.insertAdjacentElement('afterbegin', clonedElement);
+        
+        // REGEX EMAIL
+  
         function regExEmail(email){
             var regEx = /(.+)@(.+){2,}\.(.+){2,}$/; 
             return regEx.test(String(email).toLowerCase()); 

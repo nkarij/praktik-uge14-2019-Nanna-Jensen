@@ -227,14 +227,16 @@ ul {
   position: absolute;
   left: 2%;
   bottom: 2%;
-  font-size: 1.5rem;
-  color: wh;
+  font-size: 3rem;
+  color: white;
 }
 
 .slide__number {
   position: absolute;
   left: 2%;
   top: 2%;
+  font-size: 2rem;
+  color: white;
 }
 
 .auto-slidehow--active {
@@ -285,6 +287,14 @@ ul {
 
 .guestbook-form__submit-button {
   height: 40px;
+}
+
+.guestform-input--error {
+  background-color: red;
+}
+
+.guestbook-display__heading {
+  display: none;
 }
 
 .main-navigation, .footer {

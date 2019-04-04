@@ -36,17 +36,32 @@
                 <button id="toggle-theme__button">Skift Tema</button>
             </section>
 
-            <h3 class="guestbook__heading">GÆSTEBOG</h3>
+            <h3 class="guestbook__heading">SKRIV INDLÆG I GÆSTEBOG</h3>
 
-            <form id="guestbook-form" class="guestbook-form">
-                <label for="guestbook-form__name" class="guestbook-form__label">Navn</label>
-                <input type="text" name="guestbook-form__name" class="guestbook-form__input" id="guestbook-form__name">
-                <label for="guestbook-form__email" class="guestbook-form__label">Email</label>
-                <input type="email" name="guestbook-form__email" id="guestbook-form__email" class="guestbook-form__input">
-                <label for="guestbook-form__message" class="guestbook-form__label">Besked</label>
-                <textarea name="guestbook-form__message" id="guestbook-form__message" cols="1" rows="10" class="guestbook-form__message"></textarea>
-                <button type="submit" id="guestbook-form__submit-button" class="guestbook-form__submit-button">Submit</button>
+            <form name="guestbookform" id="guestbook-form" class="guestbook-form">
+                <label for="guestbookform__name" class="guestbook-form__label">Navn</label>
+                <input type="text" required name="guestbookform__name" class="guestbook-form__input" id="guestbook-form__name">
+                <label for="guestbookform__email" class="guestbook-form__label">Email</label>
+                <input type="email" name="guestbookform__email" id="guestbook-form__email" class="guestbook-form__input">
+                <label for="guestbookform__message" class="guestbook-form__label">Besked</label>
+                <textarea name="guestbookform__message" id="guestbook-form__message" cols="1" rows="10" required class="guestbook-form__message"></textarea>
+                <button name="guestbookform__submitbutton" id="guestbook-form__submit-button" class="guestbook-form__submit-button">Submit</button>
             </form>
+
+            <section id="guestbook-display" class="guestbook-display">
+                <h3 class="guestbook-display__heading">GÆSTEBOG</h3>
+                <div class="guestbook-display-container">
+                    <!-- here goes templates -->
+                </div>
+                <!-- html templates -->
+                <div class="html-templates">
+                    <div class="guestbook-display__guest">
+                        <p class="guestbook-display__message"></p>
+                        <p class="guestbook-display__name"></p>
+                    </div>
+                </div>
+
+            </section>
 
         </main>
         <!-- FOOTER -->

@@ -289,4 +289,12 @@ ul {
   height: 40px;
 }
 
+.guestform-input--error {
+  background-color: red;
+}
+
+.guestbook-display__heading {
+  display: none;
+}
+
 /*# sourceMappingURL=style.css.map */
